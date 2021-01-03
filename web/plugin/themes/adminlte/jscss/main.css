@@ -200,3 +200,7 @@ table.sortable thead, table.sortable th {
 .playsms-actions-box {
 	margin-bottom: 10px;
 }
+
+.playsms-table, .playsms-table-list {
+	width: 100%;
+}
