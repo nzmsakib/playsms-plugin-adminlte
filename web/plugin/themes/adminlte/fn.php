@@ -97,8 +97,9 @@ function adminlte_hook_themes_menu_tree($menu_config) {
             }
         }
 
+		$found = false;
         if (count($m)) {
-            $main_menu .= "
+            $menu_tree = "
             	<li class='nav-item has-treeview'>
         	        <a href='#' class='nav-link'>
             	        <i class='nav-icon far fa-folder-open'></i>
@@ -108,16 +109,35 @@ function adminlte_hook_themes_menu_tree($menu_config) {
 
             ksort($m);
             foreach ($m as $mm) {
-                $main_menu .= $mm;
+            	if ($menu_tree_item = trim($mm)) {
+	                $menu_tree .= $menu_tree_item;
+    	            $found = true;
+    	        }
             }
             unset($m);
 
-            $main_menu .= "
+            $menu_tree .= "
 	            	</ul>
             	</li>";
         }
+        
+        if ($found) {
+        	$main_menu .= $menu_tree;
+        }
     }
-
+    
+    if (auth_isvalid()) {
+    	$main_menu .= "
+			<li class='nav-item'>
+       			<a href='" . _u('index.php?app=main&inc=core_auth&route=logout') . "' class='nav-link'><i class='nav-icon fas fa-sign-out-alt'></i><p>"  . _('Logout') . "</p><a/>
+        	</li>";
+    } else {
+    	$main_menu .= "
+			<li class='nav-item'>
+       			<a href='#' class='nav-link'><i class='nav-icon fas fa-sign-in-alt'></i><p>"  . _('Login') . "</p><a/>
+        	</li>";
+	}
+	
     $content = $main_menu;
 
     return $content;
