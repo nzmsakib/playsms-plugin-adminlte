@@ -67,7 +67,6 @@
 
 <div class="wrapper">
 
-	<if.valid>
 	<!-- Navbar -->
 	<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 		<!-- Left navbar links -->
@@ -83,6 +82,7 @@
 			</li>
 		</ul>
 
+		<if.valid>
 		<!-- Right navbar links -->
 		<ul class="navbar-nav ml-auto">
 			<!-- Navbar Search -->
@@ -95,9 +95,9 @@
 				<a href="{{ LOGOUT_URL }}" class="nav-link">{{ $icon_config['logout'] }}</a>
 			</li>
 		</ul>
+		</if.valid>
 	</nav>
 	<!-- /.navbar -->
-	</if.valid>
 
 	<!-- Main Sidebar Container -->
 	<aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -136,7 +136,7 @@
 							<small><small><span class="this-page-header-subtitle text-muted text-nowrap">Welcome</span></small></small>
 						</h1>
 					</div><!-- /.col -->
-					<div class="col-sm-6">
+					<div class="col-sm-6 ml-auto">
 						<ol class="breadcrumb float-sm-right">
 							<li class="breadcrumb-item"><a href="{{ HTTP_PATH_BASE }}">{{ Home }}</a></li>
 							<li class="breadcrumb-item active"><span class="this-page-header-title">Welcome</span></li>
