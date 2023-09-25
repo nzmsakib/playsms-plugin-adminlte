@@ -98,7 +98,7 @@ function adminlte_hook_themes_menu_tree($menu_config) {
         }
 
 		$found = false;
-        if (count($m)) {
+        if (isset($m) && is_array($m) && count($m)) {
             $menu_tree = "
             	<li class='nav-item has-treeview'>
         	        <a href='#' class='nav-link'>
